@@ -8,6 +8,9 @@ Created on Sat Feb 11 00:03:27 2023
 import random
 import math
 
+#Set the pseudo-random seed for reproducibility
+random.seed(0)#each seed number has a unique random number
+
 # Initialise variable x0
 x0 =0
 print ("x0",x0)
@@ -15,9 +18,6 @@ print ("x0",x0)
 # Initialise variable y0
 y0 =0
 print("y0",y0)
-
-#Set the pseudo-random seed for reproducibility
-random.seed(0)#each seed number has a unique random number
 
 # Change x0 and y0 randomly
 rn = random.random()#if the seed is determined, the random number is determined, otherwise the random numbers are differnt every times
