@@ -130,6 +130,8 @@ print(agents)
 for i in range(n_agents):
     plt.scatter(agents[i].x, agents[i].y, color='black')
 # Plot the coordinate with the largest x red
+# use operator.itemgetter(0/1) when using list
+# use operator.attrgetter(x/y) when using class
 lx = max(agents, key=operator.attrgetter('x'))
 plt.scatter(lx.x, lx.y, color='red')
 # Plot the coordinate with the smallest x blue
