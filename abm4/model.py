@@ -72,9 +72,11 @@ random.seed(0)
 # A variable to store the number of agents
 n_agents = 10
 
+# A variable to store the number of iterations
+n_iterations = 10
 # # Initialise Agent a
 # a = af.Agent()
-# '''
+#'''
 # agentframework.py
 
 # import random
@@ -95,28 +97,24 @@ n_agents = 10
 agents = []
 for i in range(n_agents):
     #Create an agent
-    agents.append(af.Agent())
+    agents.append(af.Agent(i))
     #print(agents[i])
 print(agents)
 
-# # Move agents
-# for i in range(n_agents):
-#     # Change agents[i] coordinates randomly
-#     # x-coordinate
-#     rn = random.random()
-#     #print("rn", rn)
-#     if rn < 0.5:
-#         agents[i].x = agents[i].x + 1
-#     else:
-#         agents[i].x = agents[i].x - 1
-#     # y-coordinate
-#     rn = random.random()
-#     #print("rn", rn)
-#     if rn < 0.5:
-#         agents[i].y = agents[i].y + 1
-#     else:
-#         agents[i].y = agents[i].y - 1
-# print(agents)
+# Move agents
+# Variables for constraining movement.
+# The minimum x coordinate.
+x_min = 0
+# The minimum y coordinate.
+y_min = 0
+# The maximum x coordinate.
+x_max = 99
+# The maximum y coordinate.
+y_max = 99
+# Movement
+for loop in range(n_iterations):
+    for i in range(len(agents)):
+        agents[i].move(x_min, y_min, x_max, y_max)
 
 # # Calculate the Euclidean distance between (x0, y0) and (x1, y1)
 # # Set x0 and y0 to equal 0, x1 to equal 3, and y1 to equal 4
