@@ -36,9 +36,8 @@ def get_distance(x0, y0, x1, y1):
 
     '''
     distance = math.sqrt((x0-x1)**2+(y0-y1)**2)
-    print("distance between [", x0, y0, "] and [", x1, y1, "] =", distance)
+    #print("distance between [", x0, y0, "] and [", x1, y1, "] =", distance)
     return distance
-   #print("distance=", distance)
 
 #Define a function to calcuate the max distance
 def get_max_distance(agents):
@@ -63,7 +62,7 @@ def get_max_distance(agents):
             b = agents[j] #b is a list
             distance = get_distance(a.x, a.y, b.x, b.y) #a[0] is a number
             max_distance = max(max_distance, distance)
-    print("max_distance", max_distance)
+    #print("max_distance", max_distance)
     return max_distance
 
 # Set the pseudo-random seed for reproducibility
@@ -76,20 +75,7 @@ n_agents = 10
 n_iterations = 10
 # # Initialise Agent a
 # a = af.Agent()
-#'''
-# agentframework.py
 
-# import random
-
-# class Agent():
-#     def __init__(self):
-#         self.x = random.randint(0, 99)
-#         self.y = random.randint(0, 99)
-    
-#     def __str__(self):
-#         return self.__class__.__name__ + "(x=" + str(self.x)\
-#             + ", y=" + str(self.y) + ")"
-# '''
 # print("type(a)",type(a))
 # print(a)
 
@@ -115,6 +101,7 @@ y_max = 99
 for loop in range(n_iterations):
     for i in range(len(agents)):
         agents[i].move(x_min, y_min, x_max, y_max)
+print(agents)
 
 # # Calculate the Euclidean distance between (x0, y0) and (x1, y1)
 # # Set x0 and y0 to equal 0, x1 to equal 3, and y1 to equal 4

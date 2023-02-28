@@ -25,11 +25,12 @@ class Agent():
         self.i = i
         self.x = random.randint(0, 99)
         self.y = random.randint(0, 99)
+        pass
     
     def __str__(self):
-        return str(self.i)
-        #return self.__class__.__name__ + "(x=" + str(self.x)\
-        #    + ", y=" + str(self.y) + ")"
+        #return str(self)
+        return self.__class__.__name__ +"NO." + str(self.i) + "(x=" + str(self.x)\
+            + ", y=" + str(self.y) + ")"
             
     def __repr__(self):
         return str(self)
@@ -49,6 +50,7 @@ class Agent():
             self.y += 1
         else:
             self.y -= 1
+        # Movement constraits
         if self.x < x_min:
             self.x = x_min
         if self.y < y_min:
@@ -57,3 +59,4 @@ class Agent():
             self.x = x_max
         if self.y > y_max:
             self.y = y_max
+        return self.x, self.y
