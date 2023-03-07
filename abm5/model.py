@@ -13,6 +13,7 @@ import operator
 import time
 import my_modules.io as io
 import my_modules.agentframework as af
+import csv
 
 
 n_rows,n_cols,environment=io.read_data()
@@ -69,6 +70,26 @@ def get_max_distance(agents):
     #print("max_distance", max_distance)
     return max_distance
 
+def addup_environment(environment):
+    sum_env = 0
+    for i in range(len(environment)):
+        for j in range(len(environment[i])):
+            sum_env += environment[i][j]
+    return sum_env
+
+def addup_store(agents):
+    sum_store = 0
+    for i in range(len(agents)):
+        sum_store += agents[i].store
+    return sum_store
+
+def write_in(environment):
+    f = open('../../data/output/out.txt','w', newline='')
+    writer = csv.writer(f)
+    for row in environment:
+        writer.writerow(row) #list of values
+    f.close()
+
 # Set the pseudo-random seed for reproducibility
 random.seed(0)
 
@@ -76,7 +97,7 @@ random.seed(0)
 n_agents = 10
 
 # A variable to store the number of iterations
-n_iterations = 100
+n_iterations = 1000
 # # Initialise Agent a
 # a = af.Agent()
 
@@ -89,7 +110,7 @@ for i in range(n_agents):
     #Create an agent
     agents.append(af.Agent(i, environment, n_rows, n_cols))
     #print(agents[i])
-print(agents)
+#print(agents)
 
 # Move agents
 # Variables for constraining movement.
@@ -140,6 +161,14 @@ plt.xlim(x_max/3, y_max*2/3)
 
 plt.show()
 
+# Calculate the environment and store
+sum_store = addup_store(agents)
+sum_env = addup_environment(environment)
+
+print(sum_store, sum_env)
+
+write_in(environment)
+
 #record the start time 
 start = time.perf_counter()
 
@@ -149,5 +178,4 @@ get_max_distance(agents)
 #reord the end time
 end = time.perf_counter()
 print("Time taken to calculate maximum distance", end - start, "seconds")
-
 
