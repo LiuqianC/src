@@ -91,7 +91,7 @@ def write_in(environment):
     f.close()
 
 # Set the pseudo-random seed for reproducibility
-random.seed(0)
+#random.seed(0)
 
 # A variable to store the number of agents
 n_agents = 10
@@ -129,7 +129,7 @@ for loop in range(n_iterations):
     for i in range(len(agents)):
         agents[i].x, agents[i].y = agents[i].move(x_min, y_min, x_max, y_max)
         agents[i].eat()
-print(agents)
+#print(agents)
 
 
 # Plot
@@ -165,7 +165,7 @@ plt.show()
 sum_store = addup_store(agents)
 sum_env = addup_environment(environment)
 
-print(sum_store, sum_env)
+print(sum_store, sum_env, sum_store+sum_env)
 
 write_in(environment)
 
@@ -177,5 +177,5 @@ get_max_distance(agents)
 
 #reord the end time
 end = time.perf_counter()
-print("Time taken to calculate maximum distance", end - start, "seconds")
+#print("Time taken to calculate maximum distance", end - start, "seconds")
 
