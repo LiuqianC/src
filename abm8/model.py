@@ -227,13 +227,13 @@ def exiting():
     root.destroy()
     #sys.exit(0)
     
-# def output():
-#     # Write data
-#     print("write data")
-#     # export a txt file
-#     io.write_data('../../data/output/out7.txt', environment)
-#     # Generate a gif and export it
-#     imageio.mimsave('../../data/output/out7.gif', images, fps=3)
+def output():
+    # Write data
+    print("write data")
+    # export a txt file
+    io.write_data('../../data/output/out7.txt', environment)
+    # Generate a gif and export it
+    imageio.mimsave('../../data/output/out7.gif', images, fps=3)
     
 #%% mainbody
 if __name__ == '__main__':
