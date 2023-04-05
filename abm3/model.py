@@ -120,6 +120,7 @@ sy = min(agents, key=operator.itemgetter(1))
 plt.scatter(sy[0], sy[1], color='green')
 plt.show()
 
+
 #record the start time 
 start = time.perf_counter()
 

@@ -170,7 +170,6 @@ def update(frames):
     # Plot
     global ite
     plot()
-    #ite = ite + 1
     
 #Define a generator function
 def gen_function():
@@ -197,11 +196,11 @@ def gen_function():
     ite = 0 #initialise ite and ensure ite start from 0
     global carry_on #Not actually needed as we're not assigning, but clearer
     while (ite < n_iterations) & (carry_on) : 
-        print("gen1", ite)
+        #print("gen1", ite)
         yield ite # Returns control and waits next call.
-        print("gen2", ite)
+        #print("gen2", ite)
         ite = ite + 1
-        print("gen3",ite)
+        #print("gen3",ite)
     global data_written
     if data_written == False:
         # Write data

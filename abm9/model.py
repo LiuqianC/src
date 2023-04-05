@@ -108,7 +108,7 @@ def plot():
     plt.scatter(ly.x, ly.y, color='yellow')
     # Plot the coordinate with the smallest y green
     sy = min(agents, key=operator.attrgetter('y'))
-    plt.scatter(sy.x, sy.y, color='green')
+    plt.scatter(sy.x, sy.y, color='orange')
     #save the images
     global ite
     filename = '../../data/output/images/image' + str(ite) + '.png' 
@@ -197,25 +197,26 @@ def gen_function():
 
     '''
     global ite
-    ite = 0 #initialise ite and ensure ite start from 0
-    global carry_on #Not actually needed as we're not assigning, but clearer
-    while (ite < n_iterations) & (carry_on) : 
+    global carry_on
+    while (ite <= n_iterations) & (carry_on) :
         yield ite # Returns control and waits next call.
         ite = ite + 1
     global data_written
     if data_written == False:
-        # Write data
-        print("write data")
-        # export a txt file
-        io.write_data('../../data/output/out7.txt', environment)
-        # Generate a gif and export it
-        imageio.mimsave('../../data/output/out7.gif', images, fps=3)
+        # Set the Write data menu to normal.
+        menu_0.entryconfig("Write data", state="normal")
         data_written = True
-
+        
 def run(canvas):
     animation = anim.FuncAnimation(fig, update, init_func=plot, frames=gen_function, repeat=False)
     animation.new_frame_seq()
     canvas.draw()
+    
+def output():
+    # Write data
+    print("write data")
+    io.write_data('../../data/output/out.txt', environment)
+    imageio.mimsave('../../data/output/out.gif', images, fps=3)   
     
 def exiting():
     """
@@ -224,14 +225,7 @@ def exiting():
     root.quit()
     root.destroy()
     #sys.exit(0)
-    
-# def output():
-#     # Write data
-#     print("write data")
-#     # export a txt file
-#     io.write_data('../../data/output/out7.txt', environment)
-#     # Generate a gif and export it
-#     imageio.mimsave('../../data/output/out7.gif', images, fps=3)
+
     
 #%% mainbody
 if __name__ == '__main__':
@@ -266,7 +260,7 @@ if __name__ == '__main__':
     # Initialise agents
 
     url = 'https://agdturner.github.io/resources/abm9/data.html'
-    r = requests.get('https://agdturner.github.io/resources/abm9/data.html', verify=False)
+    r = requests.get(url, verify=False)
     content = r.text
     soup = bs4.BeautifulSoup(content, 'html.parser')
     td_ys = soup.find_all(attrs={"class" : "y"})
